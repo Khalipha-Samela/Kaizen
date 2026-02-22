@@ -99,9 +99,15 @@ http://localhost/Kaizen
 
 ## 📸 Screens / Functionality Overview
 
-- Task creation and editing
-- Drag or move tasks across workflow stages
-- Tag-based filtering (if implemented in UI)
+- Light Mode
+
+![Timer](assets/images/screenshots/timer.png) <br>
+![Task Board](assets/images/screenshots/task.png) <br>
+![Add Task](assets/images/screenshots/add_task.png) <br>
+
+- Dark Mode
+![Timer Dark](assets/images/screenshots/timer_dark.png) <br>
+
 
 ---
 

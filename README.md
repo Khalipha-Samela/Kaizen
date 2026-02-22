@@ -69,7 +69,7 @@ cd kaizen
 - Create a MySQL database
 - Import the schema:
 ```
-mysql -u root -p kaizene < sql/schema.sql
+mysql -u root -p kaizen < sql/schema.sql
 
 ```
 

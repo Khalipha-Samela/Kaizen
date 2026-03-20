@@ -141,16 +141,18 @@ class Timer {
                 this.currentTime++;
                 this.updateDisplay();
                 document.title = this.formatTime(this.currentTime) + ' - Kaizen';
-            } else {
-                // Pomodoro mode - count down
-                if (this.currentTime <= 0) {
-                    this.switchPomodoroPhase();
-                } else {
-                    this.currentTime--;
-                    this.updateDisplay();
-                    document.title = this.formatTime(this.currentTime) + ' - Kaizen';
-                }
+                return;
+            } 
+
+            //Pomodoro mode
+            if (this.currentTime <= 0) {
+                this.switchPomodoroPhase();
+                return; //stops this cycle
             }
+
+            this.currentTime--;
+            this.updateDisplay();
+            document.title = this.formatTime(this.currentTime) + ' - Kaizen';
         }, 1000);
         
         document.body.classList.add('timer-active');
@@ -189,16 +191,17 @@ class Timer {
                 this.currentTime++;
                 this.updateDisplay();
                 document.title = this.formatTime(this.currentTime) + ' - Kaizen';
-            } else {
-                // Pomodoro mode - count down
-                if (this.currentTime <= 0) {
-                    this.switchPomodoroPhase();
-                } else {
-                    this.currentTime--;
-                    this.updateDisplay();
-                    document.title = this.formatTime(this.currentTime) + ' - Kaizen';
-                }
+            } 
+
+            //Pomodoro mode
+            if (this.currentTime <= 0) {
+                this.switchPomodoroPhase();
+                return; //stops this cycle
             }
+
+            this.currentTime--;
+            this.updateDisplay();
+            document.title = this.formatTime(this.currentTime) + ' - Kaizen';
         }, 1000);
         
         document.body.classList.add('timer-active');
@@ -281,6 +284,12 @@ class Timer {
         }
         
         this.updateDisplay();
+
+        //Handle auto-start logic
+        if (!this.autoStartBreaks && this.pomodoroPhase === 'break') {
+            this.pause();
+        }
+        return;
         
         // Auto-start next phase if enabled
         if (!this.autoStartBreaks && this.pomodoroPhase === 'break') {
